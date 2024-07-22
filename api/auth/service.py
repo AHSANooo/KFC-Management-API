@@ -1,51 +1,39 @@
 # api/auth/service.py
-from datetime import timedelta, datetime
-from typing import Optional
-
-from aiohttp.abc import HTTPException
+from passlib.context import CryptContext
 from jose import JWTError, jwt
-from plotly.io._orca import status
+from datetime import datetime, timedelta
+from typing import Union
+from .models import UserInDB, TokenData
 
-from api.auth.models import User
-
-SECRET_KEY = "your_secret_key"
+# Secret key for JWT encoding and decoding
+SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return plain_password == hashed_password
-
+    return pwd_context.verify(plain_password, hashed_password)
 
 def get_password_hash(password: str) -> str:
-    return password  # Simplified for this example; use hashing in production
+    return pwd_context.hash(password)
 
-
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None) -> str:
     to_encode = data.copy()
-    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=15)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-
-def verify_token(token: str) -> str:
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+def verify_token(token: str) -> Union[TokenData, None]:
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
-            raise credentials_exception
-
-        # Check token expiration
-        expiration = payload.get("exp")
-        if expiration is None or datetime.utcnow().timestamp() > expiration:
-            raise credentials_exception
-
-        return username
+            return None
+        return TokenData(username=username)
     except JWTError:
-        raise credentials_exception
+        return None

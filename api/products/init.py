@@ -1,4 +1,4 @@
-# api/auth/__init__.py
+# api/products/__init__.py
 from fastapi import APIRouter
 
 router = APIRouter()
