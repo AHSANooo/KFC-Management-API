@@ -1,0 +1,41 @@
+2024-07-22 12:11:36,843 - app - INFO - Starting the FastAPI application
+2024-07-22 12:14:21,658 - app - INFO - Root endpoint accessed
+2024-07-22 12:33:12,324 - app - INFO - Root endpoint accessed
+2024-07-22 12:33:42,317 - app - ERROR - Unexpected error: Column expression or FROM clause expected, got <class 'api.auth.models.User'>.
+2024-07-22 12:34:37,796 - app - ERROR - Unexpected error: Column expression or FROM clause expected, got <class 'api.auth.models.User'>.
+2024-07-22 12:43:08,356 - app - INFO - Starting the FastAPI application
+2024-07-22 12:43:34,779 - app - INFO - Root endpoint accessed
+2024-07-22 12:44:21,964 - app - INFO - Root endpoint accessed
+2024-07-22 12:44:52,493 - app - INFO - Root endpoint accessed
+2024-07-22 12:46:27,787 - app - ERROR - Unexpected error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.username AS users_username, users.hashed_password AS users_hashed_password 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('ahsan', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2024-07-22 14:20:42,178 - app - INFO - Starting the FastAPI application
+2024-07-22 14:21:19,607 - app - INFO - Root endpoint accessed
+2024-07-22 14:22:09,407 - app - ERROR - Unexpected error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.username AS users_username, users.hashed_password AS users_hashed_password 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('ahsan', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2024-07-22 14:24:05,872 - app - INFO - Starting the FastAPI application
+2024-07-22 14:24:42,116 - app - INFO - Root endpoint accessed
+2024-07-22 14:25:11,368 - app - ERROR - Unexpected error: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.username AS users_username, users.hashed_password AS users_hashed_password 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('ahsan', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2024-07-22 14:49:17,280 - app - INFO - Root endpoint accessed
+2024-07-22 14:53:32,970 - app - INFO - Root endpoint accessed
+2024-07-22 14:55:32,280 - app - ERROR - Unexpected error: maximum recursion depth exceeded
+2024-07-22 15:08:35,875 - app - INFO - Root endpoint accessed
+2024-07-22 15:15:11,472 - app - INFO - Root endpoint accessed
+2024-07-22 15:16:22,675 - app - INFO - Root endpoint accessed
+2024-07-22 15:21:12,491 - app - INFO - Root endpoint accessed

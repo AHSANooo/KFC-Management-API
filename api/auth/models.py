@@ -2,12 +2,14 @@
 from pydantic import BaseModel
 from typing import Optional
 
+# api/auth/models.py
+
+from pydantic import BaseModel
+
 class User(BaseModel):
     username: str
-    email: str
+    password: str
 
-class UserInDB(User):
-    hashed_password: str
 
 class Token(BaseModel):
     access_token: str
