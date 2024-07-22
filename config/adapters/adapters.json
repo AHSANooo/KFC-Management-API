@@ -1,0 +1,14 @@
+{
+  "adapters": [
+    {
+      "name": "JsonAdapter",
+      "class": "JsonAdapter",
+      "file": "json_adapter.py"
+    },
+    {
+      "name": "CsvAdapter",
+      "class": "CsvAdapter",
+      "file": "csv_adapter.py"
+    }
+  ]
+}
