@@ -1,8 +1,0 @@
-customer_name,selected_items,payment_method,total,total_discount,total_after_discount,Datetime
-MUHAMMAD AHSAN,['hot_wings'],1,300,0.05,285,11/07/2024 12:14
-MUHAMMAD AHSAN,['fries'],1,200,0.05,190,11/07/2024 12:21
-MUHAMMAD AHSAN,['hot_wings'],2,300,0,300,11/07/2024 14:20
-HI,['chicken_strips'],1,350,5.0,332.5,2024-07-11   15:09
-J,['hot_wings'],1,300,5.0,285.0,2024-07-11   17:04
-MUHAMMAD AHSAN,['corn_on_cob'],1,174.6,5.0,165.86999999999998,2024-07-11   17:05
-HI,['coleslaw'],2,180,0,180,2024-07-11   17:06
