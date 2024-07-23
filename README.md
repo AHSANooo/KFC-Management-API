@@ -42,34 +42,3 @@ Clone the repository:
 ```sh
 git clone https://github.com/yourusername/kfc-management-system.git
 cd kfc-management-system
-
-Install required packages:
-
-sh
-
-pip install -r requirements.txt
-
-Ensure your data files are correctly placed in the config directory.
-How to Use
-
-Run the application:
-
-sh
-
-uvicorn main:app --reload
-
-Access the application at http://127.0.0.1:8000.
-
-The application provides API endpoints for managing products, inventory, and orders. Use a tool like Postman or cURL to interact with the API.
-Additional Information
-
-    The application is designed with modularity in mind, allowing easy extension and maintenance.
-    It uses a service locator pattern for flexible and scalable management of data adapters and other services.
-    Comprehensive logging and validation ensure a smooth and error-free user experience.
-
-Feel free to explore and modify the code to suit your specific needs!
-
-css
-
-
-Feel free to customize the repository URL and any other details specific to your project.
