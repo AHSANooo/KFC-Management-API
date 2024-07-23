@@ -5,17 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa1dc335-2ffe-42b4-a9ba-d9b9efc2223a" name="Changes" comment="little changes in the code">
-      <change afterPath="$PROJECT_DIR$/api/auth/users_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/user/endpoints.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/users.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/core/hashing.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/database.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test.db" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/utils/input_validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/json_storage.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/auth/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/dependencies.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/auth/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/endpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/auth/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/auth/users_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/users_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/inventory/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/inventory/endpoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/orders/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/orders/endpoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/products/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/endpoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/products/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>

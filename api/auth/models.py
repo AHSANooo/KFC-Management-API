@@ -1,8 +1,4 @@
 # api/auth/models.py
-from pydantic import BaseModel
-from typing import Optional
-
-# api/auth/models.py
 
 from pydantic import BaseModel
 

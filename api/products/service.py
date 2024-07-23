@@ -1,30 +1,82 @@
 # api/products/service.py
-from typing import List, Optional
-from .models import Product, ProductInDB
 
-# Dummy database
-fake_products_db = {}
-next_id = 1
+from typing import Dict
+from pydantic import BaseModel
+from src.utils.json_storage import read_json_file, write_json_file
+from fastapi import HTTPException, status
+
+PRODUCTS_FILE = 'config/products.json'
+
+
+class Product(BaseModel):
+    name: str
+    description: str
+    price: float
+    quantity: int
+
+
+class ProductInDB(Product):
+    id: int
+
+
+def get_products_db() -> Dict[str, Dict]:
+    """Read the product data from the JSON file."""
+    try:
+        return read_json_file(PRODUCTS_FILE)
+    except FileNotFoundError:
+        return {}
+
+
+def save_products_db(products: Dict[str, Dict]) -> None:
+    """Save product data to the JSON file."""
+    write_json_file(PRODUCTS_FILE, products)
+
 
 def create_product(product: Product) -> ProductInDB:
-    global next_id
-    product_in_db = ProductInDB(**product.dict(), id=next_id)
-    fake_products_db[next_id] = product_in_db
-    next_id += 1
-    return product_in_db
+    """Create a new product."""
+    products_db = get_products_db()
+    product_id = max(map(int, products_db.keys()), default=0) + 1
+    product_data = product.dict()
+    product_data["id"] = product_id
+    products_db[str(product_id)] = product_data
+    save_products_db(products_db)
+    return ProductInDB(id=product_id, **product_data)
 
-def get_product(product_id: int) -> Optional[ProductInDB]:
-    return fake_products_db.get(product_id)
 
-def update_product(product_id: int, product: Product) -> Optional[ProductInDB]:
-    if product_id in fake_products_db:
-        updated_product = ProductInDB(**product.dict(), id=product_id)
-        fake_products_db[product_id] = updated_product
-        return updated_product
-    return None
+def get_product(product_id: int) -> ProductInDB:
+    """Retrieve a product by its ID."""
+    products_db = get_products_db()
+    product = products_db.get(str(product_id))
+    if not product:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Product not found"
+        )
+    return ProductInDB(id=product_id, **product)
 
-def delete_product(product_id: int) -> Optional[ProductInDB]:
-    return fake_products_db.pop(product_id, None)
 
-def list_products() -> List[ProductInDB]:
-    return list(fake_products_db.values())
+def update_product(product_id: int, product: Product) -> ProductInDB:
+    """Update an existing product by its ID."""
+    products_db = get_products_db()
+    if str(product_id) not in products_db:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Product not found"
+        )
+    product_data = product.dict()
+    product_data["id"] = product_id
+    products_db[str(product_id)] = product_data
+    save_products_db(products_db)
+    return ProductInDB(id=product_id, **product_data)
+
+
+def delete_product(product_id: int) -> None:
+    """Delete a product by its ID."""
+    products_db = get_products_db()
+    if str(product_id) not in products_db:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Product not found"
+        )
+    del products_db[str(product_id)]
+    save_products_db(products_db)

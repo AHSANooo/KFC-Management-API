@@ -39,3 +39,8 @@ WHERE users.username = ?
 2024-07-22 15:15:11,472 - app - INFO - Root endpoint accessed
 2024-07-22 15:16:22,675 - app - INFO - Root endpoint accessed
 2024-07-22 15:21:12,491 - app - INFO - Root endpoint accessed
+2024-07-22 16:29:56,183 - app - INFO - Root endpoint accessed
+2024-07-22 16:43:55,482 - app - INFO - Root endpoint accessed
+2024-07-23 09:33:35,263 - app - ERROR - Unexpected error: verify_token() takes 1 positional argument but 2 were given
+2024-07-23 09:35:20,732 - app - ERROR - Unexpected error: unhashable type: 'dict'
+2024-07-23 09:46:14,820 - app - INFO - Root endpoint accessed

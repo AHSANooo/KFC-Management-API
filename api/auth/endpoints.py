@@ -1,18 +1,22 @@
 # api/auth/endpoints.py
 
 from datetime import timedelta
+from api.auth.service import create_access_token, verify_password, get_password_hash, ACCESS_TOKEN_EXPIRE_MINUTES
 from fastapi import APIRouter, HTTPException, Depends, status
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from api.auth.service import create_access_token, verify_password, get_password_hash
 from api.auth.models import User
+from src.utils.json_storage import read_json_file, write_json_file
 
 router = APIRouter()
-
 fake_users_db = {}
+
+USERS_FILE = 'config/users.json'
 
 
 def get_user(username: str):
-    return fake_users_db.get(username)
+    users_db = read_json_file(USERS_FILE)
+    return users_db.get(username)
 
 
 def authenticate_user(username: str, password: str):
@@ -24,13 +28,14 @@ def authenticate_user(username: str, password: str):
 
 @router.post("/register/")
 async def register(user: User):
-    if user.username in fake_users_db:
+    users_db = read_json_file(USERS_FILE)
+    if user.username in users_db:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Username already registered",
         )
-    fake_users_db[user.username] = {"username": user.username, "password": get_password_hash(user.password),
-                                    "tasks": []}
+    users_db[user.username] = {"username": user.username, "password": get_password_hash(user.password), "tasks": []}
+    write_json_file(USERS_FILE, users_db)
     return {"message": "User registered successfully"}
 
 
@@ -43,6 +48,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    access_token_expires = timedelta(minutes=30)  # Use the defined expiration time
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(data={"sub": user["username"]}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}

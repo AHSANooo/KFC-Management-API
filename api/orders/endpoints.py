@@ -1,36 +1,32 @@
 # api/orders/endpoints.py
-from fastapi import APIRouter, HTTPException, status
-from typing import List
-from .models import Order, OrderInDB
-from .service import create_order, get_order, update_order, delete_order, list_orders
+
+from fastapi import APIRouter, Depends, HTTPException
+from api.auth.dependencies import get_current_user
 
 router = APIRouter()
 
-@router.post("/", response_model=OrderInDB)
-def add_order(order: Order):
-    return create_order(order)
+orders_db = {}
 
-@router.get("/{order_id}", response_model=OrderInDB)
-def read_order(order_id: int):
-    order = get_order(order_id)
-    if order is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
-    return order
+@router.get("/orders/")
+async def read_orders(current_user: dict = Depends(get_current_user)):
+    return orders_db
 
-@router.put("/{order_id}", response_model=OrderInDB)
-def update_order(order_id: int, order: Order):
-    updated_order = update_order(order_id, order)
-    if updated_order is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
-    return updated_order
+@router.post("/orders/")
+async def create_order(order: dict, current_user: dict = Depends(get_current_user)):
+    order_id = len(orders_db) + 1
+    orders_db[order_id] = order
+    return {"id": order_id, "order": order}
 
-@router.delete("/{order_id}", response_model=OrderInDB)
-def delete_order(order_id: int):
-    order = delete_order(order_id)
-    if order is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Order not found")
-    return order
+@router.put("/orders/{order_id}")
+async def update_order(order_id: int, order: dict, current_user: dict = Depends(get_current_user)):
+    if order_id not in orders_db:
+        raise HTTPException(status_code=404, detail="Order not found")
+    orders_db[order_id] = order
+    return {"id": order_id, "order": order}
 
-@router.get("/", response_model=List[OrderInDB])
-def list_all_orders():
-    return list_orders()
+@router.delete("/orders/{order_id}")
+async def delete_order(order_id: int, current_user: dict = Depends(get_current_user)):
+    if order_id not in orders_db:
+        raise HTTPException(status_code=404, detail="Order not found")
+    del orders_db[order_id]
+    return {"message": "Order deleted"}
