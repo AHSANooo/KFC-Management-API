@@ -70,9 +70,9 @@ The application provides API endpoints for managing products, inventory, and ord
 
 ### Additional Information
 
-    The application is designed with modularity in mind, allowing easy extension and maintenance.
-    It uses a service locator pattern for flexible and scalable management of data adapters and other services.
-    Comprehensive logging and validation ensure a smooth and error-free user experience.
+The application is designed with modularity in mind, allowing easy extension and maintenance.
+It uses a service locator pattern for flexible and scalable management of data adapters and other services.
+Comprehensive logging and validation ensure a smooth and error-free user experience.
 
 Feel free to explore and modify the code to suit your specific needs!
 
