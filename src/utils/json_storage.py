@@ -1,19 +1,17 @@
 # src/utils/json_storage.py
 
 import json
-from typing import Dict, Any
+from pathlib import Path
+from typing import Any
 
-
-def read_json_file(filepath: str) -> Dict[str, Any]:
-    try:
-        with open(filepath, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
+def read_json_file(file_path: str) -> Any:
+    """Read JSON data from a file."""
+    if not Path(file_path).exists():
         return {}
-    except json.JSONDecodeError:
-        raise ValueError("Error decoding JSON file")
+    with open(file_path, 'r') as file:
+        return json.load(file)
 
-
-def write_json_file(filepath: str, data: Dict[str, Any]) -> None:
-    with open(filepath, 'w') as file:
+def write_json_file(file_path: str, data: Any) -> None:
+    """Write JSON data to a file."""
+    with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)

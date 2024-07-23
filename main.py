@@ -1,4 +1,5 @@
 # main.py
+
 from fastapi.middleware.cors import CORSMiddleware
 from api.auth.endpoints import router as auth_router
 from api.products.endpoints import router as products_router
@@ -7,8 +8,6 @@ from api.inventory.endpoints import router as inventory_router
 from src.utils.logger import Logger
 from src.database import init_db
 from fastapi import FastAPI
-from api.auth import endpoints as auth_endpoints
-#from api.user import endpoints as user_endpoints
 
 # Setup logger
 logger = Logger.setup_logger("app", "app.log")
@@ -27,16 +26,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app = FastAPI()
-
-#app.include_router(user_endpoints.router, prefix="/user", tags=["user"])
-app.include_router(auth_endpoints.router, prefix="/auth", tags=["auth"])
 # Include routers
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
 app.include_router(products_router, prefix="/products", tags=["products"])
 app.include_router(orders_router, prefix="/orders", tags=["orders"])
 app.include_router(inventory_router, prefix="/inventory", tags=["inventory"])
-
 
 # Root endpoint
 @app.get("/")
@@ -44,13 +38,11 @@ def read_root():
     logger.info("Root endpoint accessed")
     return {"message": "Welcome to the KFC Management System"}
 
-
 # Exception handling for validation errors
 @app.exception_handler(Exception)
 async def validation_exception_handler(request, exc):
     logger.error(f"Unexpected error: {exc}")
     return {"detail": str(exc)}
-
 
 if __name__ == "__main__":
     import uvicorn

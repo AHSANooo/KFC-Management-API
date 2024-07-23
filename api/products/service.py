@@ -1,12 +1,9 @@
-# api/products/service.py
-
-from typing import Dict
+from typing import Dict, List
 from pydantic import BaseModel
 from src.utils.json_storage import read_json_file, write_json_file
 from fastapi import HTTPException, status
 
-PRODUCTS_FILE = 'config/products.json'
-
+PRODUCTS_FILE = 'config/products/products.json'
 
 class Product(BaseModel):
     name: str
@@ -14,10 +11,8 @@ class Product(BaseModel):
     price: float
     quantity: int
 
-
 class ProductInDB(Product):
     id: int
-
 
 def get_products_db() -> Dict[str, Dict]:
     """Read the product data from the JSON file."""
@@ -26,11 +21,14 @@ def get_products_db() -> Dict[str, Dict]:
     except FileNotFoundError:
         return {}
 
-
 def save_products_db(products: Dict[str, Dict]) -> None:
     """Save product data to the JSON file."""
     write_json_file(PRODUCTS_FILE, products)
 
+def get_all_products() -> List[ProductInDB]:
+    """Retrieve all products."""
+    products_db = get_products_db()
+    return [ProductInDB(**product) for product in products_db.values()]
 
 def create_product(product: Product) -> ProductInDB:
     """Create a new product."""
@@ -42,7 +40,6 @@ def create_product(product: Product) -> ProductInDB:
     save_products_db(products_db)
     return ProductInDB(id=product_id, **product_data)
 
-
 def get_product(product_id: int) -> ProductInDB:
     """Retrieve a product by its ID."""
     products_db = get_products_db()
@@ -53,7 +50,6 @@ def get_product(product_id: int) -> ProductInDB:
             detail="Product not found"
         )
     return ProductInDB(id=product_id, **product)
-
 
 def update_product(product_id: int, product: Product) -> ProductInDB:
     """Update an existing product by its ID."""
@@ -68,7 +64,6 @@ def update_product(product_id: int, product: Product) -> ProductInDB:
     products_db[str(product_id)] = product_data
     save_products_db(products_db)
     return ProductInDB(id=product_id, **product_data)
-
 
 def delete_product(product_id: int) -> None:
     """Delete a product by its ID."""

@@ -11,7 +11,6 @@
       <change afterPath="$PROJECT_DIR$/src/database.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test.db" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/utils/input_validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/json_storage.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/auth/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/dependencies.py" afterDir="false" />
@@ -20,10 +19,11 @@
       <change beforePath="$PROJECT_DIR$/api/auth/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/auth/users_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/auth/users_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/inventory/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/inventory/endpoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/orders/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/orders/endpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/products/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/endpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/products/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/json_storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/json_storage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

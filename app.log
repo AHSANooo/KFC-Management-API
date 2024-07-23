@@ -44,3 +44,22 @@ WHERE users.username = ?
 2024-07-23 09:33:35,263 - app - ERROR - Unexpected error: verify_token() takes 1 positional argument but 2 were given
 2024-07-23 09:35:20,732 - app - ERROR - Unexpected error: unhashable type: 'dict'
 2024-07-23 09:46:14,820 - app - INFO - Root endpoint accessed
+2024-07-23 10:39:20,401 - app - ERROR - Unexpected error: get_product() takes 1 positional argument but 2 were given
+2024-07-23 10:42:44,608 - app - ERROR - Unexpected error: get_product() takes 1 positional argument but 2 were given
+2024-07-23 11:17:52,335 - app - ERROR - Unexpected error: invalid literal for int() with base 10: 'burger'
+2024-07-23 11:18:12,942 - app - ERROR - Unexpected error: invalid literal for int() with base 10: 'burger'
+2024-07-23 11:18:36,950 - app - ERROR - Unexpected error: invalid literal for int() with base 10: 'burger'
+2024-07-23 11:18:53,566 - app - ERROR - Unexpected error: invalid literal for int() with base 10: 'burger'
+2024-07-23 11:30:09,941 - app - ERROR - Unexpected error: 4 validation errors for ProductInDB
+name
+  Field required [type=missing, input_value={'discount': 7, 'price': ...'bun': 2, 'chicken': 1}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+description
+  Field required [type=missing, input_value={'discount': 7, 'price': ...'bun': 2, 'chicken': 1}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+quantity
+  Field required [type=missing, input_value={'discount': 7, 'price': ...'bun': 2, 'chicken': 1}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+id
+  Field required [type=missing, input_value={'discount': 7, 'price': ...'bun': 2, 'chicken': 1}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
