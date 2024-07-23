@@ -1,11 +1,10 @@
-# api/inventory/endpoints.py
 from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List
-from api.auth.dependencies import get_current_user
-from api.auth.models import User
 from .models import InventoryItem, InventoryItemInDB
 from .service import create_inventory_item, get_inventory_item, update_inventory_item, delete_inventory_item, \
     list_inventory_items
+from api.auth.dependencies import get_current_user
+from api.auth.models import User
 
 router = APIRouter()
 

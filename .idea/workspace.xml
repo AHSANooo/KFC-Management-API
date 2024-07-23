@@ -23,8 +23,6 @@
       <change beforePath="$PROJECT_DIR$/api/orders/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/orders/endpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/products/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/endpoints.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/products/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/products/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

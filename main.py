@@ -8,7 +8,7 @@ from src.utils.logger import Logger
 from src.database import init_db
 from fastapi import FastAPI
 from api.auth import endpoints as auth_endpoints
-from api.user import endpoints as user_endpoints
+#from api.user import endpoints as user_endpoints
 
 # Setup logger
 logger = Logger.setup_logger("app", "app.log")
@@ -29,7 +29,7 @@ app.add_middleware(
 
 app = FastAPI()
 
-app.include_router(user_endpoints.router, prefix="/user", tags=["user"])
+#app.include_router(user_endpoints.router, prefix="/user", tags=["user"])
 app.include_router(auth_endpoints.router, prefix="/auth", tags=["auth"])
 # Include routers
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
